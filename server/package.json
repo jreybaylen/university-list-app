@@ -1,0 +1,11 @@
+{
+  "name": "server",
+  "version": "0.0.1",
+  "description": "Server side of university list app",
+  "main": "index.js",
+  "scripts": {
+  },
+  "keywords": [],
+  "license": "ISC",
+  "author": "John Rey Baylen"
+}
