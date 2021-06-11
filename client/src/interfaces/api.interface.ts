@@ -7,6 +7,11 @@ interface UniversityProps {
     web_pages: Array<string>
 }
 
+interface APIResponseProps {
+    data: Array<UniversityProps>
+}
+
 export type {
-    UniversityProps
+    UniversityProps,
+    APIResponseProps
 }

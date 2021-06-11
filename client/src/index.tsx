@@ -4,6 +4,8 @@ import reportWebVitals from './reportWebVitals'
 
 import RootApp from '@pages/Root'
 
+import '@config/axios'
+
 ReactDOM.render(
 	<React.StrictMode>
 		<RootApp />

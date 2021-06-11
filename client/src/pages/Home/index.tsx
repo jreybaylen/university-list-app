@@ -3,8 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { lazy, useEffect, useState, useCallback } from 'react'
 
 import { styles } from './index.style'
-import { APIResponseProps } from './index.interface'
-import { UniversityProps } from '@interface/api.interface'
+import { UniversityProps, APIResponseProps } from '@interface/api.interface'
 
 const UniversityItem = lazy(() => import('@container/UniversityItem'))
 
@@ -13,9 +12,9 @@ function Home (): JSX.Element {
     const [ universities, setUniversities ] = useState<Array<UniversityProps>>([])
     const handleGetUniversities = useCallback(async () => {
         try {
-            const { data }: APIResponseProps = await axios.get('http://universities.hipolabs.com/search?name=middle')
+            const { data }: APIResponseProps = await axios.get('/search?name=middle')
             
-            setUniversities(data.slice(0, 20))
+            setUniversities(data)
         } catch (error: any) {
             console.error('Error Found: ', error)
         }
