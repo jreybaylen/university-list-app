@@ -6,7 +6,8 @@ const styles: StypesProps = {
         width: '100%',
         borderRadius: 4,
         padding: '10px 15px',
-        border: '1px solid #ccc'
+        border: '1px solid #ccc',
+        textTransform: 'capitalize'
     }
 }
 

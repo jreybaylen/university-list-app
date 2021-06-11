@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { lazy, useEffect, useState, useCallback, Fragment } from 'react'
 
 import { styles } from './index.style'
+import { HomeFormProps } from './index.interface'
 import { UniversityProps, APIResponseProps } from '@interface/api.interface'
 
 const SearchComposer = lazy(() => import('@container/SearchComposer'))
@@ -10,23 +11,27 @@ const UniversityItem = lazy(() => import('@container/UniversityItem'))
 
 function Home (): JSX.Element {
     const history = useHistory()
+    const [ keyType, setKeyType ] = useState<string>('country')
     const [ keyWord, setKeyWord ] = useState<string>('philippines')
     const [ universities, setUniversities ] = useState<Array<UniversityProps>>([])
     const handleGetUniversities = useCallback(async () => {
         try {
-            const { data }: APIResponseProps = await axios.get(`/search?country=${ keyWord }`)
+            const { data }: APIResponseProps = await axios.get(`/search?${ keyType }=${ keyWord }`)
             
             setUniversities(data)
         } catch (error: any) {
             console.error('Error Found: ', error)
         }
-    }, [ keyWord ])
+    }, [ keyType, keyWord ])
     const handleSelectUniversity = (name: string) => {
         history.push(`/university/${ encodeURIComponent(name) }`)
     }
-    const handleUpdateKeyWord = (searchKeyWord: string) => {
+    const handleUpdateKeyWord = (options: HomeFormProps) => {
+        const { search, type } = options
+
         setUniversities([])
-        setKeyWord(searchKeyWord)
+        setKeyType(type)
+        setKeyWord(search)
     }
 
     useEffect(() => {
@@ -37,7 +42,11 @@ function Home (): JSX.Element {
         <Fragment>
             <div>
                 <div style={ styles.container }>
-                    <SearchComposer onSubmit={ handleUpdateKeyWord } />
+                    <SearchComposer
+                        keyType={ keyType }
+                        keyWord={ keyWord }
+                        onSubmit={ handleUpdateKeyWord }
+                    />
                 </div>
             </div>
             <div style={ styles.container }>
