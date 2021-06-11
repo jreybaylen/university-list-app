@@ -1,8 +1,12 @@
+import { lazy, Suspense } from 'react'
+
+const HomePage = lazy(() => import('@pages/Home'))
+
 function Root (): JSX.Element {
     const rootElement = (
-        <div>
-            Hello World!
-        </div>
+        <Suspense fallback="">
+            <HomePage />
+        </Suspense>
     )
 
     return rootElement
