@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { lazy, useEffect, useState, useCallback } from 'react'
+import { lazy, useEffect, useState, useCallback, MouseEvent } from 'react'
 
 import { styles } from './index.style'
 import { APIResponseProps } from './index.interface'
@@ -11,13 +11,16 @@ function Home (): JSX.Element {
     const [ universities, setUniversities ] = useState<Array<UniversityProps>>([])
     const handleGetUniversities = useCallback(async () => {
         try {
-            const { data }: APIResponseProps = await axios.get('http://universities.hipolabs.com/search')
+            const { data }: APIResponseProps = await axios.get('http://universities.hipolabs.com/search?name=middle')
             
             setUniversities(data.slice(0, 20))
         } catch (error: any) {
             console.error('Error Found: ', error)
         }
     }, [])
+    const handleSelectUniversity = (event: MouseEvent<HTMLDivElement>) => {
+        console.log(event)
+    }
 
     useEffect(() => {
         handleGetUniversities()
@@ -29,6 +32,7 @@ function Home (): JSX.Element {
                 (university: UniversityProps, index: number) => (
                     <University
                         { ...university }
+                        onSelect={ handleSelectUniversity }
                         key={ `${ index } - ${ university.name.replaceAll(' ', '-').toLocaleLowerCase() }` }
                     />
                 )

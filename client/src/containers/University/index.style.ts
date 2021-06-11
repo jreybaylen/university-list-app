@@ -16,15 +16,6 @@ const styles: StypesProps = {
     },
     websiteContainer: {
         display: 'flex'
-    },
-    website: {
-        marginRight: 10,
-        borderRadius: 4,
-        color: '#2196f3',
-        fontSize: '.95rem',
-        padding: '6px 10px',
-        width: 'max-content',
-        textDecoration: 'none'
     }
 }
 

@@ -1,14 +1,24 @@
-import { useEffect, useState } from 'react'
+import { lazy, useEffect, useState, MouseEvent } from 'react'
 
 import { styles } from './index.style'
-import { UniversityProps } from '@interface/api.interface'
+import { ModifiedUniversityProps } from './index.interface'
 
 import { Card } from '@components/Card'
 
-function University (props: UniversityProps): JSX.Element {
+const WebsiteLink = lazy(() => import('@container/WebsiteLink'))
+
+function University (props: ModifiedUniversityProps): JSX.Element {
     const [ name, setName ] = useState<string>('')
     const [ country, setCountry ] = useState<string>('')
     const [ websites, setWebsites ] = useState<Array<string>>([])
+    const handleCardClick = (event: MouseEvent<HTMLDivElement>) => {
+        if (props.onSelect) {
+            props.onSelect(event)
+        }
+    }
+    const handleOpenWebsite = (website: string) => {
+        window.open(website, '_blank')
+    }
 
     useEffect(() => {
         const { name, country, ...rest } = props
@@ -19,21 +29,17 @@ function University (props: UniversityProps): JSX.Element {
     }, [ props ])
     
     const universityElement = (
-        <Card>
+        <Card onClick={ handleCardClick }>
             <p style={ styles.country }>{ country }</p>
             <h3 style={ styles.name }>{ name }</h3>
             <div style={ styles.websiteContainer }>
                 { websites.map(
                     (website: string) => (
-                        <a 
+                        <WebsiteLink
                             key={ website }
-                            target="_blank"
-                            rel="noreferrer"
-                            href={ website }
-                            style={ styles.website }
-                        >
-                            { website }
-                        </a>
+                            website={ website }
+                            onSelect={ handleOpenWebsite }
+                        />
                     )
                 ) }
             </div>
