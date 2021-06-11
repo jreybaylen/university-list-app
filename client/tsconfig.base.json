@@ -1,0 +1,14 @@
+{
+    "rules": {
+        "semicolon": false
+    },
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@pages/*": [ "src/pages/*" ],
+            "@assets/*": [ "src/assets/*" ],
+            "@config/*": [ "src/config/*" ],
+            "@components/*": [ "src/components/*" ]
+        }
+    }
+}
