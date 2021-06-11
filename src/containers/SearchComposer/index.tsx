@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, ChangeEvent } from 'react'
 
 import { styles } from './index.style'
-import { SearchComposerProps } from './index.interface'
+import { FormProps, SearchComposerProps } from './index.interface'
 
 import { Input, Form, Picker, Button } from '@components/index'
 
@@ -9,7 +9,7 @@ function SearchComposer (props: SearchComposerProps): JSX.Element {
     const [ type, setType ] = useState<string>('')
     const [ search, setSearch ] = useState<string>('')
     const handleChangeEvent = (event: ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
-        const { value, name } = event.target as { value: string, name: 'type' | 'word' }
+        const { value, name } = event.target as FormProps<'type' | 'word'>
 
         switch (name) {
             case 'type':

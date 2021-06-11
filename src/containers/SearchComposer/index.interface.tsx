@@ -1,3 +1,5 @@
+import { FormProps } from '@interface/form.interface'
+
 interface SearchComposerProps {
     keyType: string
     keyWord: string
@@ -5,5 +7,6 @@ interface SearchComposerProps {
 }
 
 export type {
+    FormProps,
     SearchComposerProps
 }

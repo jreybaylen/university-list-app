@@ -1,6 +1,7 @@
 import { lazy, useState, ChangeEvent, Fragment } from 'react'
 
 import { styles } from './index.style'
+import { FormProps } from '@interface/form.interface'
 
 import { Input } from '@components/index'
 
@@ -13,7 +14,7 @@ function Auth (): JSX.Element {
         console.log(username, password)
     }
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const { value, name } = event.target as { value: string, name: 'username' | 'password' }
+        const { value, name } = event.target as FormProps<'username' | 'password'>
         
         switch (name) {
             case 'username':

@@ -1,6 +1,7 @@
 import { lazy, useState, ChangeEvent, Fragment } from 'react'
 
 import { styles } from './index.style'
+import { FormProps } from '@interface/form.interface'
 
 import { Input } from '@components/index'
 
@@ -15,7 +16,7 @@ function Register (): JSX.Element {
         console.log(name, username, password, confirmPassword)
     }
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const { value, name } = event.target as { value: string, name: 'name' | 'username' | 'password' | 'confirm-password' }
+        const { value, name } = event.target as FormProps<'name' | 'username' | 'password' | 'confirm-password'>
 
         switch (name) {
             case 'name':
