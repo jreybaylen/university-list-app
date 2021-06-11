@@ -1,10 +1,6 @@
 import { StypesProps } from '@interface/style.interface'
 
 const styles: StypesProps = {
-    university: {
-        width: '500px',
-        height: '500px'
-    },
     country: {
         fontSize: '.85rem',
         margin: '0 0 8px 10px'

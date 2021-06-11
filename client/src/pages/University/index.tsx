@@ -7,7 +7,7 @@ import { UniversityProps, APIResponseProps } from '@interface/api.interface'
 
 import { Information } from '@components/Information'
 
-const WebsiteLink = lazy(() => import('@container/WebsiteLink'))
+const WebsiteLink = lazy(() => import('@components/WebsiteLink'))
 
 function University (): JSX.Element {
     const history = useHistory()

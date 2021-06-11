@@ -5,7 +5,7 @@ import { ModifiedUniversityProps } from './index.interface'
 
 import { Card } from '@components/Card'
 
-const WebsiteLink = lazy(() => import('@container/WebsiteLink'))
+const WebsiteLink = lazy(() => import('@components/WebsiteLink'))
 
 function University (props: ModifiedUniversityProps): JSX.Element {
     const [ name, setName ] = useState<string>('')

@@ -6,8 +6,9 @@ import { WebsiteLinkProps } from './index.interface'
 function WebsiteLink (props: WebsiteLinkProps): JSX.Element {
     const { website } = props
     const handleClickLink = (event: MouseEvent<HTMLButtonElement>) => {
+        event.stopPropagation()
+        
         if (props.onSelect) {
-            event.stopPropagation()
             props.onSelect(website)
         }
     }
