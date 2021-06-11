@@ -8,15 +8,17 @@ import { Input, Form, Picker, Button } from '@components/index'
 function SearchComposer (props: SearchComposerProps): JSX.Element {
     const [ type, setType ] = useState<string>('')
     const [ search, setSearch ] = useState<string>('')
-    const handleChangeType = (event: ChangeEvent<HTMLSelectElement>) => {
-        const { target: { value } } = event
+    const handleChangeEvent = (event: ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
+        const { value, name } = event.target as { value: string, name: 'type' | 'word' }
 
-        setType(value)
-    }
-    const handleChangeWord = (event: ChangeEvent<HTMLInputElement>) => {
-        const { target: { value } } = event
-
-        setSearch(value)
+        switch (name) {
+            case 'type':
+                setType(value)
+                break
+            case 'word':
+                setSearch(value)
+                break
+        }
     }
     const handleSearchSubmit = () => {
         if (props.onSubmit) {
@@ -39,15 +41,17 @@ function SearchComposer (props: SearchComposerProps): JSX.Element {
             <Form onSubmit={ handleSearchSubmit }>
                 <div style={ styles.searchForm }>
                     <Picker
+                        name="type"
                         value={ type }
-                        onChange={ handleChangeType }
+                        onChange={ handleChangeEvent }
                         options={ [ 'Name', 'Country' ] }
                     />
                     <Input
+                        name="word"
                         value={ search }
                         placeholder="Search"
-                        onChange={ handleChangeWord }
                         style={ styles.input }
+                        onChange={ handleChangeEvent }
                     />
                     <Button type="submit" children="Go" />
                 </div>

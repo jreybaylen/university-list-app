@@ -13,6 +13,7 @@ function Picker (props: PickerProps): JSX.Element {
     const pickerElement = (
         <select
             value={ value }
+            name={ props.name }
             id="picker-component"
             style={ styles.select }
             onChange={ handleChange }
