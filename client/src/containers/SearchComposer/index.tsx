@@ -1,5 +1,6 @@
 import { useState, ChangeEvent } from 'react'
 
+import { styles } from './index.style'
 import { SearchComposerProps } from './index.interface'
 
 import { Input, Form } from '@components/index'
@@ -12,16 +13,19 @@ function SearchComposer (props: SearchComposerProps): JSX.Element {
     const handleSearchSubmit = () => {
         if (props.onSubmit) {
             props.onSubmit(search)
+            setSearch('')
         }
     }
     const searchComposerElement = (
-        <Form onSubmit={ handleSearchSubmit }>
-            <Input
-                value={ search }
-                placeholder="Search"
-                onChange={ handleChangeSearch }
-            />
-        </Form>
+        <div style={ styles.container }>
+            <Form onSubmit={ handleSearchSubmit }>
+                <Input
+                    value={ search }
+                    placeholder="Search"
+                    onChange={ handleChangeSearch }
+                />
+            </Form>
+        </div>
     )
 
     return searchComposerElement

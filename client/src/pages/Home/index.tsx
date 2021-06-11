@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
-import { lazy, useEffect, useState, useCallback } from 'react'
+import { lazy, useEffect, useState, useCallback, Fragment } from 'react'
 
 import { styles } from './index.style'
 import { UniversityProps, APIResponseProps } from '@interface/api.interface'
@@ -34,18 +34,24 @@ function Home (): JSX.Element {
     }, [ handleGetUniversities ])
 
     const homeElement = (
-        <div style={ styles.container }>
-            <SearchComposer onSubmit={ handleUpdateKeyWord } />
-            { universities.map(
-                (university: UniversityProps, index: number) => (
-                    <UniversityItem
-                        { ...university }
-                        onSelect={ handleSelectUniversity }
-                        key={ `${ index } - ${ university.name.replaceAll(' ', '-').toLocaleLowerCase() }` }
-                    />
-                )
-            ) }
-        </div>
+        <Fragment>
+            <div>
+                <div style={ styles.container }>
+                    <SearchComposer onSubmit={ handleUpdateKeyWord } />
+                </div>
+            </div>
+            <div style={ styles.container }>
+                { universities.map(
+                    (university: UniversityProps, index: number) => (
+                        <UniversityItem
+                            { ...university }
+                            onSelect={ handleSelectUniversity }
+                            key={ `${ index } - ${ university.name.replaceAll(' ', '-').toLocaleLowerCase() }` }
+                        />
+                    )
+                ) }
+            </div>
+        </Fragment>
     )
 
     return homeElement

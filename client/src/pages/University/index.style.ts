@@ -31,7 +31,7 @@ const styles: StypesProps = {
         margin: 'auto',
         fontWeight: 500,
         borderRadius: 5,
-        maxWidth: '1200px',
+        maxWidth: '1000px',
         textAlign: 'center',
         padding: '30px 15px',
         border: '2px solid #fff',
@@ -41,7 +41,7 @@ const styles: StypesProps = {
     information: {
         width: '90%',
         margin: 'auto',
-        maxWidth: '1200px'
+        maxWidth: '1000px'
     }
 }
 
