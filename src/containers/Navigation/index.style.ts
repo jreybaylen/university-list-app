@@ -21,6 +21,17 @@ const styles: StypesProps = {
     activeLink: {
         background: '#f1f1f1',
         border: '1px solid #ccc'
+    },
+    name: {
+        fontWeight: 500,
+        margin: '0 15px'
+    },
+    signOut: {
+        marginLeft: 5,
+        fontWeight: 500,
+        paddingLeft: 20,
+        cursor: 'pointer',
+        borderLeft: '2px solid #ccc'
     }
 }
 
