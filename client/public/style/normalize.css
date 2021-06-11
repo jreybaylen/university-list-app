@@ -349,9 +349,14 @@ template {
   display: none;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 button {
   background-color: #f7f7f7;
 }
+
 button:hover {
   background-color: #eaeaea;
 }
