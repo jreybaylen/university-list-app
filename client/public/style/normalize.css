@@ -348,3 +348,7 @@ template {
 [hidden] {
   display: none;
 }
+
+a:hover {
+  background-color: #f1f1f1;
+}

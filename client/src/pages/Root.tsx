@@ -8,7 +8,7 @@ function Root (): JSX.Element {
             <HomePage />
         </Suspense>
     )
-
+ 
     return rootElement
 }
 

@@ -1,6 +1,7 @@
 import axios from 'axios'
-import { lazy, useEffect, useState, useCallback, Fragment } from 'react'
+import { lazy, useEffect, useState, useCallback } from 'react'
 
+import { styles } from './index.style'
 import { APIResponseProps } from './index.interface'
 import { UniversityProps } from '@interface/api.interface'
 
@@ -23,7 +24,7 @@ function Home (): JSX.Element {
     }, [ handleGetUniversities ])
 
     const homeElement = (
-        <Fragment>
+        <div style={ styles.container }>
             { universities.map(
                 (university: UniversityProps, index: number) => (
                     <University
@@ -32,7 +33,7 @@ function Home (): JSX.Element {
                     />
                 )
             ) }
-        </Fragment>
+        </div>
     )
 
     return homeElement
