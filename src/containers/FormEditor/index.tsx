@@ -13,7 +13,7 @@ function FormEditor (props: FormEditorProps): JSX.Element {
     }
     const authElement = (
         <div style={ styles.container }>
-            <Form onSubmit={ handleSubmit }>
+            <Form name={ props.name } onSubmit={ handleSubmit }>
                 <h1 style={ styles.heading }>
                     { props.title }
                 </h1>

@@ -38,7 +38,7 @@ function SearchComposer (props: SearchComposerProps): JSX.Element {
 
     const searchComposerElement = (
         <div style={ styles.container }>
-            <Form onSubmit={ handleSearchSubmit }>
+            <Form name="search" onSubmit={ handleSearchSubmit }>
                 <div style={ styles.searchForm }>
                     <Picker
                         name="type"

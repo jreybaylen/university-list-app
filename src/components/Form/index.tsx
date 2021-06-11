@@ -3,7 +3,7 @@ import { FormEvent } from 'react'
 import { FormProps } from './index.interface'
 
 function Form (props: FormProps): JSX.Element {
-    const { onSubmit, children } = props
+    const { onSubmit, children, name } = props
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
@@ -12,7 +12,7 @@ function Form (props: FormProps): JSX.Element {
         }
     }
     const formElement = (
-        <form onSubmit={ handleSubmit }>
+        <form name={ name } onSubmit={ handleSubmit }>
             { children }
         </form>
     )
