@@ -6,16 +6,22 @@ import { Input } from '@components/index'
 
 const FormEditor = lazy(() => import('@container/FormEditor'))
 
-function Auth (): JSX.Element {
+function Register (): JSX.Element {
     const handleSubmit = () => {
 
     }
-    const authElement = (
+    const registerElement = (
         <FormEditor
-            title="Sign In"
-            submitLabel="Sign In"
+            submitLabel="Register"
             onSubmit={ handleSubmit } 
+            title="Create your account"
         >
+            <Input
+                key="name"
+                type="text"
+                placeholder="Name"
+                style={ styles.input }
+            />
             <Input
                 type="text"
                 key="username"
@@ -29,10 +35,17 @@ function Auth (): JSX.Element {
                 placeholder="Password"
                 style={ styles.input }
             />
+            <Input
+                type="password"
+                autoComplete="off"
+                style={ styles.input }
+                key="confirm-password"
+                placeholder="Confirm Password"
+            />
         </FormEditor>
     )
 
-    return authElement
+    return registerElement
 }
 
-export default Auth
+export default Register
