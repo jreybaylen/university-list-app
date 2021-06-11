@@ -1,8 +1,7 @@
-import { FormEvent } from 'react'
+import { FormEvent, FormHTMLAttributes } from 'react'
 
-interface FormProps {
+interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
     onSubmit(param?: FormEvent<HTMLFormElement>): void
-    children: JSX.Element | Array<JSX.Element>
 }
 
 export type {

@@ -29,9 +29,11 @@ function Home (): JSX.Element {
     const handleUpdateKeyWord = (options: HomeFormProps) => {
         const { search, type } = options
 
-        setUniversities([])
-        setKeyType(type)
-        setKeyWord(search)
+        if ((search !== keyWord) || (type !== keyType)) {
+            setUniversities([])
+            setKeyType(type)
+            setKeyWord(search)
+        }
     }
 
     useEffect(() => {

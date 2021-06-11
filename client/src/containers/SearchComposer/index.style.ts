@@ -4,6 +4,7 @@ const styles: StypesProps = {
     container: {
         padding: 20,
         width: '100%',
+        margin: 'auto',
         maxWidth: '500px'
     },
     searchForm: {

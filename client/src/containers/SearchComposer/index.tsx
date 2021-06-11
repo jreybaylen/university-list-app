@@ -3,7 +3,7 @@ import { useState, useEffect, useRef, ChangeEvent } from 'react'
 import { styles } from './index.style'
 import { SearchComposerProps } from './index.interface'
 
-import { Input, Form, Picker } from '@components/index'
+import { Input, Form, Picker, Button } from '@components/index'
 
 function SearchComposer (props: SearchComposerProps): JSX.Element {
     const [ type, setType ] = useState<string>('')
@@ -48,6 +48,7 @@ function SearchComposer (props: SearchComposerProps): JSX.Element {
                         placeholder="Search"
                         onChange={ handleChangeWord }
                     />
+                    <Button type="submit" children="Go" />
                 </div>
             </Form>
         </div>
