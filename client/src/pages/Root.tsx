@@ -10,7 +10,7 @@ function Root (): JSX.Element {
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/" component={ HomePage } />
-                    <Route exact path="/university/:id" component={ UniversityPage } />
+                    <Route exact path="/university/:name" component={ UniversityPage } />
                 </Switch>
             </BrowserRouter>
         </Suspense>

@@ -1,12 +1,12 @@
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
-import { lazy, useEffect, useState, useCallback, MouseEvent } from 'react'
+import { lazy, useEffect, useState, useCallback } from 'react'
 
 import { styles } from './index.style'
 import { APIResponseProps } from './index.interface'
 import { UniversityProps } from '@interface/api.interface'
 
-const University = lazy(() => import('@container/University'))
+const UniversityItem = lazy(() => import('@container/UniversityItem'))
 
 function Home (): JSX.Element {
     const history = useHistory()
@@ -20,8 +20,8 @@ function Home (): JSX.Element {
             console.error('Error Found: ', error)
         }
     }, [])
-    const handleSelectUniversity = (event: MouseEvent<HTMLDivElement>) => {
-        history.push('/university/1')
+    const handleSelectUniversity = (name: string) => {
+        history.push(`/university/${ encodeURIComponent(name) }`)
     }
 
     useEffect(() => {
@@ -32,7 +32,7 @@ function Home (): JSX.Element {
         <div style={ styles.container }>
             { universities.map(
                 (university: UniversityProps, index: number) => (
-                    <University
+                    <UniversityItem
                         { ...university }
                         onSelect={ handleSelectUniversity }
                         key={ `${ index } - ${ university.name.replaceAll(' ', '-').toLocaleLowerCase() }` }

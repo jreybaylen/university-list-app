@@ -1,4 +1,4 @@
-import { lazy, useEffect, useState, MouseEvent } from 'react'
+import { lazy, useEffect, useState } from 'react'
 
 import { styles } from './index.style'
 import { ModifiedUniversityProps } from './index.interface'
@@ -11,9 +11,9 @@ function University (props: ModifiedUniversityProps): JSX.Element {
     const [ name, setName ] = useState<string>('')
     const [ country, setCountry ] = useState<string>('')
     const [ websites, setWebsites ] = useState<Array<string>>([])
-    const handleCardClick = (event: MouseEvent<HTMLDivElement>) => {
+    const handleCardClick = () => {
         if (props.onSelect) {
-            props.onSelect(event)
+            props.onSelect(props.name)
         }
     }
     const handleOpenWebsite = (website: string) => {
