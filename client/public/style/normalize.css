@@ -1,9 +1,5 @@
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
-* {
-  font-family: 'Roboto', sans-serif;
-}
-
 /* Document
    ========================================================================== */
 
@@ -350,16 +346,4 @@ template {
 
 [hidden] {
   display: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-button {
-  background-color: #f7f7f7;
-}
-
-button:hover {
-  background-color: #eaeaea;
 }

@@ -1,4 +1,6 @@
 import { ChangeEvent } from 'react'
+
+import { styles } from './index.style'
 import { PickerProps } from './index.interface'
 
 function Picker (props: PickerProps): JSX.Element {
@@ -9,10 +11,18 @@ function Picker (props: PickerProps): JSX.Element {
         }
     }
     const pickerElement = (
-        <select onChange={ handleChange } value={ value }>
+        <select
+            value={ value }
+            id="picker-component"
+            style={ styles.select }
+            onChange={ handleChange }
+        >
             { options.map(
                 (option: string, index: number) => (
-                    <option key={ `${ index }-${ option }` } value={ option.toLocaleLowerCase() }>
+                    <option
+                        key={ `${ index }-${ option }` }
+                        value={ option.toLocaleLowerCase() }
+                    >
                         { option }
                     </option>
                 )
