@@ -5,7 +5,7 @@ const styles: StypesProps = {
         padding: 20,
         width: '100%',
         margin: 'auto',
-        maxWidth: '500px'
+        maxWidth: '600px'
     },
     searchForm: {
         display: 'flex'

@@ -24,7 +24,7 @@ function Home (): JSX.Element {
         }
     }, [ keyType, keyWord ])
     const handleSelectUniversity = (name: string) => {
-        history.push(`/${ encodeURIComponent(name) }`)
+        history.push(`/university/${ encodeURIComponent(name) }`)
     }
     const handleUpdateKeyWord = (options: HomeFormProps) => {
         const { search, type } = options
@@ -42,7 +42,7 @@ function Home (): JSX.Element {
 
     const homeElement = (
         <Fragment>
-            <div>
+            <div style={ styles.searchBar }>
                 <div style={ styles.container }>
                     <SearchComposer
                         keyType={ keyType }

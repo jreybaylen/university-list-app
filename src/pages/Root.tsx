@@ -4,15 +4,17 @@ import { Switch, BrowserRouter, Route } from 'react-router-dom'
 const AuthPage = lazy(() => import('@pages/Auth'))
 const HomePage = lazy(() => import('@pages/Home'))
 const UniversityPage = lazy(() => import('@pages/University'))
+const NavigationMenu = lazy(() => import('@container/Navigation'))
 
 function Root (): JSX.Element {
     const rootElement = (
         <Suspense fallback="">
             <BrowserRouter>
+                <NavigationMenu />
                 <Switch>
                     <Route exact path="/" component={ HomePage } />
-                    <Route path="/:name" component={ UniversityPage } />
                     <Route exact path="/auth" component={ AuthPage } />
+                    <Route path="/university/:name" component={ UniversityPage } />
                 </Switch>
             </BrowserRouter>
         </Suspense>
