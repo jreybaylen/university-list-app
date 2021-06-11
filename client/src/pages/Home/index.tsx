@@ -12,7 +12,7 @@ function Home (): JSX.Element {
     const [ universities, setUniversities ] = useState<Array<UniversityProps>>([])
     const handleGetUniversities = useCallback(async () => {
         try {
-            const { data }: APIResponseProps = await axios.get('/search?name=middle')
+            const { data }: APIResponseProps = await axios.get('/search?country=philippines')
             
             setUniversities(data)
         } catch (error: any) {
