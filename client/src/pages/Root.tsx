@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react'
 import { Switch, BrowserRouter, Route } from 'react-router-dom'
 
 const HomePage = lazy(() => import('@pages/Home'))
+const UniversityPage = lazy(() => import('@pages/University'))
 
 function Root (): JSX.Element {
     const rootElement = (
@@ -9,6 +10,7 @@ function Root (): JSX.Element {
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/" component={ HomePage } />
+                    <Route exact path="/university/:id" component={ UniversityPage } />
                 </Switch>
             </BrowserRouter>
         </Suspense>

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { useHistory } from 'react-router-dom'
 import { lazy, useEffect, useState, useCallback, MouseEvent } from 'react'
 
 import { styles } from './index.style'
@@ -8,6 +9,7 @@ import { UniversityProps } from '@interface/api.interface'
 const University = lazy(() => import('@container/University'))
 
 function Home (): JSX.Element {
+    const history = useHistory()
     const [ universities, setUniversities ] = useState<Array<UniversityProps>>([])
     const handleGetUniversities = useCallback(async () => {
         try {
@@ -19,7 +21,7 @@ function Home (): JSX.Element {
         }
     }, [])
     const handleSelectUniversity = (event: MouseEvent<HTMLDivElement>) => {
-        console.log(event)
+        history.push('/university/1')
     }
 
     useEffect(() => {
