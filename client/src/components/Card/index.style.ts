@@ -5,7 +5,7 @@ const styles: StypesProps = {
         margin: 15,
         borderRadius: 5,
         padding: '15px 30px 15px 20px',
-        borderBottom: '1px solid #ccc'
+        boxShadow: 'rgb(0 0 0 / 20%) 0px 4px 8px 0px'
     }
 }
 

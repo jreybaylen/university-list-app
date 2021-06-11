@@ -1,12 +1,17 @@
 import { StypesProps } from '@interface/style.interface'
 
 const styles: StypesProps = {
+    university: {
+        width: '500px',
+        height: '500px'
+    },
     country: {
-        margin: '0 0 5px 10px'
+        fontSize: '.85rem',
+        margin: '0 0 8px 10px'
     },
     name: {
+        fontWeight: 500,
         color: '#3e3e3e',
-        fontWeight: 'normal',
         margin: '0 0 15px 10px'
     },
     websiteContainer: {
@@ -16,6 +21,7 @@ const styles: StypesProps = {
         marginRight: 10,
         borderRadius: 4,
         color: '#2196f3',
+        fontSize: '.95rem',
         padding: '6px 10px',
         width: 'max-content',
         textDecoration: 'none'
