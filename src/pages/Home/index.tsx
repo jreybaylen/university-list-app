@@ -43,7 +43,7 @@ function Home (): JSX.Element {
     const homeElement = (
         <Fragment>
             <div style={ styles.searchBar }>
-                <div style={ styles.container }>
+                <div style={ styles.searchContainer }>
                     <SearchComposer
                         keyType={ keyType }
                         keyWord={ keyWord }

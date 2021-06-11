@@ -5,12 +5,15 @@ const styles: StypesProps = {
         width: '100%',
         maxWidth: 1000,
         margin: 'auto',
+        paddingTop: 20,
         display: 'flex',
-        justifyContent: 'flex-end'
+        justifyContent: 'center'
     },
     navContainer: {
+        paddingLeft: 0,
         display: 'flex',
-        listStyle: 'none'
+        listStyle: 'none',
+        justifyContent: 'center'
     },
     link: {
         color: '#2196f3',
