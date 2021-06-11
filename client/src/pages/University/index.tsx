@@ -1,13 +1,11 @@
 import axios from 'axios'
 import { useParams, useHistory } from 'react-router-dom'
-import { lazy, useEffect, useState, useCallback, Fragment } from 'react'
+import { useEffect, useState, useCallback, Fragment } from 'react'
 
 import { styles } from './index.style'
 import { UniversityProps, APIResponseProps } from '@interface/api.interface'
 
-import { Information } from '@components/Information'
-
-const WebsiteLink = lazy(() => import('@components/WebsiteLink'))
+import { Information, WebsiteLink } from '@components/index'
 
 function University (): JSX.Element {
     const history = useHistory()

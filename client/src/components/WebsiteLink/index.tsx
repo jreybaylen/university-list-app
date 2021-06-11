@@ -21,4 +21,6 @@ function WebsiteLink (props: WebsiteLinkProps): JSX.Element {
     return websiteLinkElement
 }
 
-export default WebsiteLink
+export {
+    WebsiteLink
+}

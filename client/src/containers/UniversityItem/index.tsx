@@ -1,11 +1,9 @@
-import { lazy, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { styles } from './index.style'
 import { ModifiedUniversityProps } from './index.interface'
 
-import { Card } from '@components/Card'
-
-const WebsiteLink = lazy(() => import('@components/WebsiteLink'))
+import { Card, WebsiteLink } from '@components/index'
 
 function University (props: ModifiedUniversityProps): JSX.Element {
     const [ name, setName ] = useState<string>('')
