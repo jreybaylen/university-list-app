@@ -8,7 +8,7 @@ const styles: StypesProps = {
     container: {
         width: '100%',
         margin: 'auto',
-        maxWidth: '1000px'
+        maxWidth: 1000
     }
 }
 

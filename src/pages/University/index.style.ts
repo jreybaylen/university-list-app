@@ -29,9 +29,9 @@ const styles: StypesProps = {
         width: '80%',
         color: '#fff',
         margin: 'auto',
+        maxWidth: 1000,
         fontWeight: 500,
         borderRadius: 5,
-        maxWidth: '1000px',
         textAlign: 'center',
         padding: '30px 15px',
         border: '2px solid #fff',
@@ -41,7 +41,7 @@ const styles: StypesProps = {
     information: {
         width: '90%',
         margin: 'auto',
-        maxWidth: '1000px'
+        maxWidth: 1000
     }
 }
 

@@ -10,7 +10,11 @@ function Input (props: InputHTMLAttributes<HTMLInputElement>): JSX.Element {
         }
     }
     const inputElement = (
-        <input style={ styles.input } onChange={ handleChange } { ...rest } />
+        <input
+            { ...rest }
+            onChange={ handleChange }
+            style={ { ...styles.input, ...props.style } }
+        />
     )
 
     return inputElement

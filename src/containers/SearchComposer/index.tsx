@@ -47,6 +47,7 @@ function SearchComposer (props: SearchComposerProps): JSX.Element {
                         value={ search }
                         placeholder="Search"
                         onChange={ handleChangeWord }
+                        style={ styles.input }
                     />
                     <Button type="submit" children="Go" />
                 </div>

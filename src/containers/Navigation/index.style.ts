@@ -3,9 +3,9 @@ import { StypesProps } from '@interface/style.interface'
 const styles: StypesProps = {
     container: {
         width: '100%',
+        maxWidth: 1000,
         margin: 'auto',
         display: 'flex',
-        maxWidth: '1000px',
         justifyContent: 'flex-end'
     },
     navContainer: {
