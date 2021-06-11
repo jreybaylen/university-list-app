@@ -24,7 +24,7 @@ function Home (): JSX.Element {
         }
     }, [ keyType, keyWord ])
     const handleSelectUniversity = (name: string) => {
-        history.push(`/university/${ encodeURIComponent(name) }`)
+        history.push(`/${ encodeURIComponent(name) }`)
     }
     const handleUpdateKeyWord = (options: HomeFormProps) => {
         const { search, type } = options

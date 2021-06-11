@@ -11,8 +11,8 @@ function Root (): JSX.Element {
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/" component={ HomePage } />
+                    <Route path="/:name" component={ UniversityPage } />
                     <Route exact path="/auth" component={ AuthPage } />
-                    <Route path="/university/:name" component={ UniversityPage } />
                 </Switch>
             </BrowserRouter>
         </Suspense>
