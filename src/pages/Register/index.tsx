@@ -1,4 +1,4 @@
-import { lazy, useState, ChangeEvent, Fragment } from 'react'
+import { lazy, useState, FormEvent, ChangeEvent, Fragment } from 'react'
 
 import { styles } from './index.style'
 import { FormProps } from '@interface/form.interface'
@@ -12,8 +12,31 @@ function Register (): JSX.Element {
     const [ username, setUsername ] = useState<string>('')
     const [ password, setPassword ] = useState<string>('')
     const [ confirmPassword, setConfirmPassword ] = useState<string>('')
-    const handleSubmit = () => {
-        console.log(name, username, password, confirmPassword)
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+
+        const localStorageKey = 'univ-app-user'
+        const existingUsers = localStorage.getItem(localStorageKey) || ''
+        
+        if ([ name, username, password, confirmPassword ].includes('')) {
+            console.error('All fields are required. Kindly check your password and register again.')
+
+            return
+        }
+
+        if (password !== confirmPassword) {
+            console.error('Password mismatch. Kindly check your password and register again.')
+
+            return
+        }
+
+        localStorage.setItem(
+            localStorageKey,
+            JSON.stringify([
+                ...(existingUsers ? JSON.parse(existingUsers): []),
+                { name, username, password }
+            ])
+        )
     }
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { value, name } = event.target as FormProps<'name' | 'username' | 'password' | 'confirm-password'>

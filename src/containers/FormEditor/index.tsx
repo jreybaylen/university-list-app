@@ -1,12 +1,14 @@
+import { FormEvent } from 'react'
+
 import { styles } from './index.style'
 import { FormEditorProps } from './index.interface'
 
 import { Form, Button } from '@components/index'
 
 function FormEditor (props: FormEditorProps): JSX.Element {
-    const handleSubmit = () => {
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         if (props.onSubmit) {
-            props.onSubmit()
+            props.onSubmit(event)
         }
     }
     const authElement = (
