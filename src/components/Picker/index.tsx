@@ -21,8 +21,8 @@ function Picker (props: PickerProps): JSX.Element {
             { options.map(
                 (option: string, index: number) => (
                     <option
+                        value={ option.toLowerCase() }
                         key={ `${ index }-${ option }` }
-                        value={ option.toLocaleLowerCase() }
                     >
                         { option }
                     </option>
