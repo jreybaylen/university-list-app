@@ -3,7 +3,7 @@ import { StypesProps } from '@interface/style.interface'
 const container = {
     width: '100%',
     margin: 'auto',
-    maxWidth: 1000,
+    maxWidth: 1000
 }
 const styles: StypesProps = {
     searchBar: {
