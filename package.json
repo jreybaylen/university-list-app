@@ -42,6 +42,17 @@
       "last 1 safari version"
     ]
   },
+  "jest": {
+    "moduleNameMapper": {
+      "^@pages/(.*)$": "<rootDir>/src/pages/$1",
+      "^@assets/(.*)$": "<rootDir>/src/assets/$1",
+      "^@config/(.*)$": "<rootDir>/src/config/$1",
+      "^@util/(.*)$": "<rootDir>/src/utils/$1",
+      "^@interface/(.*)$": "<rootDir>/src/interfaces/$1",
+      "^@container/(.*)$": "<rootDir>/src/containers/$1",
+      "^@components/(.*)$": "<rootDir>/src/components/$1"
+    }
+  },
   "devDependencies": {
     "@types/react-router-dom": "^5.1.7",
     "react-app-rewire-alias": "^1.0.3",
