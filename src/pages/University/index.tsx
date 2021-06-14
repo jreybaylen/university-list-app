@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { lazy, useEffect, useState, useCallback, Fragment } from 'react'
 
 import { styles } from './index.style'
+import { getAuthUserFromStorage } from '@util/index'
 import { StorageKeyProps } from '@util/index.interface'
 import { ProfileProps } from '@interface/profile.interface'
 import { UniversityProps, APIResponseProps } from '@interface/api.interface'
@@ -13,6 +14,7 @@ const Banner = lazy(() => import('@container/Banner'))
 
 function University (): JSX.Element {
     const { name } = useParams<{ name: string }>()
+    const existingUsers = getAuthUserFromStorage()
     const [ buttonLabel, setButtonLabel ] = useState<string>('Add')
     const [ universityKey, setUniversityKey ] = useState<string>('')
     const [ university, setUniversity ] = useState<UniversityProps>()
@@ -77,11 +79,13 @@ function University (): JSX.Element {
         <Fragment>
             <Banner title={ university?.name || '' } />
             <div style={ styles.information }>
-                <div style={ styles.save }>
-                    <Button style={ buttonStyle } onClick={ handleToggleUniversityFromStorage }>
-                        { buttonLabel } University
-                    </Button>
-                </div>
+                { Boolean(existingUsers) && (
+                    <div style={ styles.save }>
+                        <Button style={ buttonStyle } onClick={ handleToggleUniversityFromStorage }>
+                            { buttonLabel } University
+                        </Button>
+                    </div>
+                ) }
                 <Information
                     title="University"
                     content={ `${ university?.name }, ${ university?.alpha_two_code }` || '' }
