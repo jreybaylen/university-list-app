@@ -13,7 +13,7 @@ function Auth (): JSX.Element {
     const history = useHistory()
     const [ username, setUsername ] = useState<string>('')
     const [ password, setPassword ] = useState<string>('')
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
         const existingUsers = localStorage.getItem('univ-app-user') || ''
@@ -36,7 +36,9 @@ function Auth (): JSX.Element {
         ))
 
         if (Boolean(account)) {
-            localStorage.setItem('univ-app-user-auth', JSON.stringify(account))
+            const { setUserToStorage } = await import('@util/index')
+
+            setUserToStorage('univ-app-user-auth', account)
             history.replace('/')
         }
     }

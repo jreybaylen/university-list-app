@@ -4,15 +4,18 @@ import { NavLink, useHistory, useLocation } from 'react-router-dom'
 import { routes } from './routes'
 import { styles } from './index.style'
 import { RouteProps } from './index.interface'
-import { ProfileProps } from '@interface/profile.interface'
+import { environment } from '@config/environment'
+import { StorageKeyProps } from '@util/index.interface'
+import { setUserToStorage, getAuthUserFromStorage } from '@util/index'
 
 function Navigation (): JSX.Element {
     const history = useHistory()
     const location = useLocation()
-    const existingUsers = localStorage.getItem('univ-app-user-auth') || ''
-    const availableUsers: ProfileProps = existingUsers ? JSON.parse(existingUsers) : ''
+    const existingUsers = getAuthUserFromStorage()
     const handleSignOut = () => {
-        localStorage.setItem('univ-app-user-auth', '')
+        const { authStorage } = environment as { authStorage: StorageKeyProps }
+
+        setUserToStorage(authStorage)
         history.replace('/auth')
     }
 
@@ -23,7 +26,7 @@ function Navigation (): JSX.Element {
     const navigationElement = (
         <nav style={ styles.container }>
             <ul style={ styles.navContainer }>
-                { routes(Boolean(availableUsers)).map(
+                { routes(Boolean(existingUsers)).map(
                     ({ id, path, label }: RouteProps) => (
                         <li key={ id }>
                             <NavLink
@@ -36,7 +39,7 @@ function Navigation (): JSX.Element {
                         </li>
                     )
                 ) }
-                { Boolean(availableUsers) && (
+                { Boolean(existingUsers) && (
                     <Fragment>
                         <li>
                             <NavLink
@@ -44,7 +47,7 @@ function Navigation (): JSX.Element {
                                 to="/profile"
                                 style={ styles.link }
                                 activeStyle={ styles.activeLink }
-                                children={ `Hi ${ availableUsers.name }!` }
+                                children={ `Hi ${ existingUsers.name || 'Anonymous' }!` }
                             />
                         </li>
                         <li style={ styles.signOut } onClick={ handleSignOut }>

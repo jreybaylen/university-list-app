@@ -8,6 +8,7 @@
             "@pages/*": [ "src/pages/*" ],
             "@assets/*": [ "src/assets/*" ],
             "@config/*": [ "src/config/*" ],
+            "@util/*": [ "src/utils/*" ],
             "@interface/*": [ "src/interfaces/*" ],
             "@container/*": [ "src/containers/*" ],
             "@components/*": [ "src/components/*" ]
