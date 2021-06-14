@@ -15,22 +15,15 @@ const getAuthUserFromStorage = (): ProfileProps => {
     return getExistingData('univ-app-user-auth') as ProfileProps
 }
 
-const getDataFromStorage = (storageKey: StorageKeyProps): Array<ProfileProps | UniversityStorageProps> => {
-    return getExistingData(storageKey) as Array<ProfileProps | UniversityStorageProps> || []
+const getDataFromStorage = (storageKey: StorageKeyProps): Array<ProfileProps> | UniversityStorageProps => {
+    return getExistingData(storageKey) as Array<ProfileProps> | UniversityStorageProps || []
 }
 
 const getUniversityListByUser = (storageKey: StorageKeyProps, usernameFromStorage: string) => {
-    const dataFromStorage = getDataFromStorage(storageKey) as Array<UniversityStorageProps>
-    const univListFromStorageByUser = dataFromStorage.find(
-        (userWithUniv: UniversityStorageProps) => {
-            const [username] = Object.keys(userWithUniv)
+    const dataFromStorage = getDataFromStorage(storageKey) as UniversityStorageProps
+    const saveUniversityByUser = (dataFromStorage && dataFromStorage[ usernameFromStorage ]) || {}
 
-            return username === usernameFromStorage
-        }
-    )
-    const saveUniversityByUser = (univListFromStorageByUser && univListFromStorageByUser[ usernameFromStorage ]) || {}
-
-    return saveUniversityByUser
+    return [ saveUniversityByUser, dataFromStorage ]
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

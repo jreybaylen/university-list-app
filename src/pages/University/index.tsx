@@ -21,7 +21,7 @@ function University (): JSX.Element {
         const { saveUnivStorage } = environment as { saveUnivStorage: StorageKeyProps }
         const { setDataToStorage, getUniversityListByUser, getAuthUserFromStorage } = await import('@util/index')
         const { username } = getAuthUserFromStorage() as ProfileProps
-        const saveUniversityByUser = getUniversityListByUser(saveUnivStorage, username)
+        const [ saveUniversityByUser, univListFromStorageByUser ] = getUniversityListByUser(saveUnivStorage, username)
 
         if (init && univKeyToStore) {
             if (Boolean((saveUniversityByUser as any)[ univKeyToStore ])) {
@@ -31,12 +31,13 @@ function University (): JSX.Element {
             return
         }
 
-        const newSetOfUnivList = [ {
+        const newSetOfUnivList = {
+            ...univListFromStorageByUser,
             [ username ]: {
                 ...saveUniversityByUser,
                 [ universityKey ]: (buttonLabel === 'Add') ? university : undefined
             }
-        } ]
+        }
 
         setDataToStorage(saveUnivStorage, newSetOfUnivList)
 
