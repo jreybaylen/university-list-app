@@ -45,11 +45,12 @@ describe('<Card /> Component', () => {
                 <>{ content }</>
             </Card>
         )
+        const cardElement = getByText(content)
 
-        expect(getByText(content)).toHaveStyle('box-shadow: none')
-        fireEvent.mouseOver(getByText(content))
-        expect(getByText(content)).toHaveStyle('box-shadow: rgb(0 0 0 / 20%) 0px 4px 8px 0px')
-        fireEvent.mouseLeave(getByText(content))
-        expect(getByText(content)).toHaveStyle('box-shadow: none')
+        expect(cardElement).toHaveStyle('box-shadow: none')
+        fireEvent.mouseOver(cardElement)
+        expect(cardElement).toHaveStyle('box-shadow: rgb(0 0 0 / 20%) 0px 4px 8px 0px')
+        fireEvent.mouseLeave(cardElement)
+        expect(cardElement).toHaveStyle('box-shadow: none')
     })
 })
