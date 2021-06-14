@@ -20,6 +20,9 @@ function Register (): JSX.Element {
 
         const localStorageKey = 'univ-app-user'
         const existingUsers = getDataFromStorage(localStorageKey) as Array<ProfileProps>
+        const findMatchUsername = existingUsers.find(
+            (account: ProfileProps) => (account.username === username)
+        )
         
         if ([ name, username, password, confirmPassword ].includes('')) {
             console.error('All fields are required. Kindly check your password and register again.')
@@ -29,6 +32,12 @@ function Register (): JSX.Element {
 
         if (password !== confirmPassword) {
             console.error('Password mismatch. Kindly check your password and register again.')
+
+            return
+        }
+
+        if (Boolean(findMatchUsername)) {
+            console.error('Username already in used. Kindly check and try again.')
 
             return
         }

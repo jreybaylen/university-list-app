@@ -19,9 +19,11 @@ const styles: StypesProps = {
         color: '#2196f3',
         borderRadius: 25,
         padding: '10px 20px',
-        textDecoration: 'none'
+        textDecoration: 'none',
+        textTransform: 'capitalize'
     },
     activeLink: {
+        fontWeight: 500,
         background: '#f1f1f1',
         border: '1px solid #ccc'
     },
