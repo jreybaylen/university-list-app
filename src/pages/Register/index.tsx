@@ -116,7 +116,11 @@ function Register (): JSX.Element {
                     />
                 </Fragment>
             </FormEditor>
-            <Link to="/auth" children="Already an account?" />
+            <Link
+                to="/auth"
+                style={ styles.link }
+                children="Already an account?"
+            />
         </Fragment>
     )
 

@@ -6,7 +6,7 @@ const styles: StypesProps = {
         width: '90%',
         maxWidth: 400,
         borderRadius: 5,
-        margin: '10% auto',
+        margin: '8% auto 2%',
         boxShadow: 'rgb(0 0 0 / 20%) 0px 10px 15px 0px'
     },
     heading: {

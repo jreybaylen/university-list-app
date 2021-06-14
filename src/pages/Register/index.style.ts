@@ -11,6 +11,13 @@ const styles: StypesProps = {
     input: {
         borderRadius: 5,
         padding: '10px 15px'
+    },
+    link: {
+        display: 'block',
+        color: '#03a9f4',
+        fontSize: '.9rem',
+        textAlign: 'center',
+        textDecoration: 'none'
     }
 }
 
