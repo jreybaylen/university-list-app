@@ -6,13 +6,18 @@ import { StorageKeyProps } from '@util/index.interface'
 import { UniversityProps } from '@interface/api.interface'
 import { ProfileProps } from '@interface/profile.interface'
 
+import { Loader, Button } from '@components/index'
+
 const Banner = lazy(() => import('@container/Banner'))
 const UniversityItem = lazy(() => import('@container/UniversityItem'))
 
 function Profile (): JSX.Element {
     const profile = getAuthUserFromStorage()
+    const [ loading, setLoading ] = useState<boolean>(false)
     const [ universities, setUniversities ] = useState<Array<UniversityProps>>([])
     const handleGetListOfUniv = useCallback(async () => {
+        setLoading(true)
+
         const { environment } = await import('@config/environment')
         const { getUniversityListByUser } = await import('@util/index')
         const { saveUnivStorage } = environment as { saveUnivStorage: StorageKeyProps }
@@ -23,6 +28,7 @@ function Profile (): JSX.Element {
         )
         
         setUniversities(profileUnivList)
+        setLoading(false)
     }, [ profile.username ])
     const handleRemoveUniversity = async (univName: string) => {
         const { environment } = await import('@config/environment')
@@ -33,14 +39,17 @@ function Profile (): JSX.Element {
         const univKeyToStore = univName.replaceAll(' ', delimiter)
         const newSetOfUnivList = {
             ...univListFromStorageByUser,
-            [ username ]: {
+            [ username ]: Boolean(univName) ? {
                 ...saveUniversityByUser,
                 [ univKeyToStore ]: undefined
-            }
+            } : {}
         }
 
         handleGetListOfUniv()
         setDataToStorage(saveUnivStorage, newSetOfUnivList)
+    }
+    const clearSaveUniversities = () => {
+        handleRemoveUniversity('')
     }
 
     useEffect(() => {
@@ -50,7 +59,17 @@ function Profile (): JSX.Element {
     const profileElement = (
         <Fragment>
             <Banner title={ profile.name } />
+            <Loader show={ loading } />
             <div style={ styles.container }>
+                { Boolean(universities.length) && (
+                    <div style={ styles.buttonContainer }>
+                        <Button
+                            children="Remove All"
+                            style={ styles.button }
+                            onClick={ clearSaveUniversities }
+                        />
+                    </div>
+                ) }
                 { universities.map(
                     (university: UniversityProps, index: number) => (
                         <UniversityItem
@@ -59,6 +78,9 @@ function Profile (): JSX.Element {
                             key={ `${ index } - ${ university.name.replaceAll(' ', '-').toLocaleLowerCase() }` }
                         />
                     )
+                ) }
+                { !Boolean(universities.length) && (
+                    <p style={ styles.noResult }>No university found as of the moment</p>
                 ) }
             </div>
         </Fragment>

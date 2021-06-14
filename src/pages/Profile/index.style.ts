@@ -5,6 +5,21 @@ const styles: StypesProps = {
         width: '100%',
         margin: 'auto',
         maxWidth: 1000
+    },
+    noResult: {
+        fontWeight: 500,
+        textAlign: 'center'
+    },
+    buttonContainer: {
+        display: 'flex',
+        justifyContent: 'flex-end'
+    },
+    button: {
+        color: '#fff',
+        border: 'none',
+        background: '#f44336',
+        borderTopLeftRadius: 25,
+        borderBottomLeftRadius: 25
     }
 }
 
