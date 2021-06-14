@@ -10,7 +10,7 @@ import { setUserToStorage, getAuthUserFromStorage } from '@util/index'
 
 function Navigation (): JSX.Element {
     const history = useHistory()
-    const location = useLocation()
+    const { pathname } = useLocation()
     const existingUsers = getAuthUserFromStorage()
     const handleSignOut = () => {
         const { authStorage } = environment as { authStorage: StorageKeyProps }
@@ -19,7 +19,7 @@ function Navigation (): JSX.Element {
         history.replace('/auth')
     }
 
-    if (location.pathname.includes('/university')) {
+    if (pathname.includes('/university') || (pathname === '/profile')) {
         return <Fragment />
     }
 

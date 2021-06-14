@@ -1,14 +1,15 @@
 import axios from 'axios'
-import { useParams, useHistory } from 'react-router-dom'
-import { useEffect, useState, useCallback, Fragment } from 'react'
+import { useParams } from 'react-router-dom'
+import { useEffect, useState, useCallback, Fragment, lazy } from 'react'
 
 import { styles } from './index.style'
 import { UniversityProps, APIResponseProps } from '@interface/api.interface'
 
 import { Information, WebsiteLink } from '@components/index'
 
+const Banner = lazy(() => import('@container/Banner'))
+
 function University (): JSX.Element {
-    const history = useHistory()
     const { name } = useParams<{ name: string }>()
     const [ university, setUniversity ] = useState<UniversityProps>()
     const handleGetSpecificUniversity = useCallback(async () => {
@@ -24,9 +25,6 @@ function University (): JSX.Element {
     const handleOpenWebsite = (website: string) => {
         window.open(website, '_blank')
     }
-    const handleBack = () => {
-        history.replace('/')
-    }
 
     useEffect(() => {
         handleGetSpecificUniversity()
@@ -34,14 +32,7 @@ function University (): JSX.Element {
 
     const universityElement = (
         <Fragment>
-            <button style={ styles.back } onClick={ handleBack }>
-                Back
-            </button>
-            <div style={ styles.container }>
-                <div style={ styles.content }>
-                    <h1 style={ styles.heading }>{ university?.name }</h1>
-                </div>
-            </div>
+            <Banner title={ university?.name || '' } />
             <div style={ styles.information }>
                 <Information
                     title="University"
