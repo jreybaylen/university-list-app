@@ -36,9 +36,9 @@ function Auth (): JSX.Element {
         ))
 
         if (Boolean(account)) {
-            const { setUserToStorage } = await import('@util/index')
+            const { setDataToStorage } = await import('@util/index')
 
-            setUserToStorage('univ-app-user-auth', account)
+            setDataToStorage('univ-app-user-auth', account)
             history.replace('/')
         }
     }

@@ -1,7 +1,7 @@
 import { StorageKeyProps } from './index.interface'
 import { ProfileProps } from '@interface/profile.interface'
 
-const getExistingUser = (storageKey: StorageKeyProps): ProfileProps | Array<ProfileProps> | undefined => {
+const getExistingData = (storageKey: StorageKeyProps): ProfileProps | Array<ProfileProps> | undefined => {
     const existingUsers = localStorage.getItem(storageKey) || ''
 
     if (Boolean(existingUsers)) {
@@ -11,20 +11,20 @@ const getExistingUser = (storageKey: StorageKeyProps): ProfileProps | Array<Prof
     return undefined
 }
 
-const setUserToStorage = (storageKey: StorageKeyProps, account?: ProfileProps | Array<ProfileProps>): void => {
+const setDataToStorage = (storageKey: StorageKeyProps, account?: ProfileProps | Array<ProfileProps>): void => {
     localStorage.setItem(storageKey, JSON.stringify(account || ''))
 }
 
 const getAuthUserFromStorage = (): ProfileProps => {
-    return getExistingUser('univ-app-user-auth') as ProfileProps
+    return getExistingData('univ-app-user-auth') as ProfileProps
 }
 
-const getUsersFromStorage = (storageKey: StorageKeyProps): Array<ProfileProps> => {
-    return getExistingUser(storageKey) as Array<ProfileProps> || []
+const getDataFromStorage = (storageKey: StorageKeyProps): Array<ProfileProps> => {
+    return getExistingData(storageKey) as Array<ProfileProps> || []
 }
 
 export {
-    setUserToStorage,
-    getUsersFromStorage,
+    setDataToStorage,
+    getDataFromStorage,
     getAuthUserFromStorage
 }

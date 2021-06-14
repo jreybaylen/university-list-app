@@ -3,7 +3,7 @@ import { lazy, useState, FormEvent, ChangeEvent, Fragment } from 'react'
 
 import { styles } from './index.style'
 import { FormProps } from '@interface/form.interface'
-import { setUserToStorage, getUsersFromStorage } from '@util/index'
+import { setDataToStorage, getDataFromStorage } from '@util/index'
 
 import { Input } from '@components/index'
 
@@ -18,7 +18,7 @@ function Register (): JSX.Element {
         event.preventDefault()
 
         const localStorageKey = 'univ-app-user'
-        const existingUsers = getUsersFromStorage(localStorageKey)
+        const existingUsers = getDataFromStorage(localStorageKey)
         
         if ([ name, username, password, confirmPassword ].includes('')) {
             console.error('All fields are required. Kindly check your password and register again.')
@@ -32,7 +32,7 @@ function Register (): JSX.Element {
             return
         }
 
-        setUserToStorage(
+        setDataToStorage(
             localStorageKey,
             [ ...existingUsers, { name, username, password } ]
         )

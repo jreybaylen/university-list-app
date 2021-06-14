@@ -6,7 +6,7 @@ import { styles } from './index.style'
 import { RouteProps } from './index.interface'
 import { environment } from '@config/environment'
 import { StorageKeyProps } from '@util/index.interface'
-import { setUserToStorage, getAuthUserFromStorage } from '@util/index'
+import { setDataToStorage, getAuthUserFromStorage } from '@util/index'
 
 function Navigation (): JSX.Element {
     const history = useHistory()
@@ -15,7 +15,7 @@ function Navigation (): JSX.Element {
     const handleSignOut = () => {
         const { authStorage } = environment as { authStorage: StorageKeyProps }
 
-        setUserToStorage(authStorage)
+        setDataToStorage(authStorage)
         history.replace('/auth')
     }
 

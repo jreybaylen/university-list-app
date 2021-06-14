@@ -5,7 +5,7 @@ import { lazy, useEffect, useState, useCallback, Fragment } from 'react'
 import { styles } from './index.style'
 import { UniversityProps, APIResponseProps } from '@interface/api.interface'
 
-import { Information, WebsiteLink } from '@components/index'
+import { Information, Button, WebsiteLink } from '@components/index'
 
 const Banner = lazy(() => import('@container/Banner'))
 
@@ -25,6 +25,11 @@ function University (): JSX.Element {
     const handleOpenWebsite = (website: string) => {
         window.open(website, '_blank')
     }
+    const handleSaveUniversity = async () => {
+        // const { setDataToStorage, getDataFromStorage } = await import('@util/index')
+
+        console.log(university)
+    }
 
     useEffect(() => {
         handleGetSpecificUniversity()
@@ -34,6 +39,11 @@ function University (): JSX.Element {
         <Fragment>
             <Banner title={ university?.name || '' } />
             <div style={ styles.information }>
+                <div style={ styles.save }>
+                    <Button style={ styles.button } onClick={ handleSaveUniversity }>
+                        Save University
+                    </Button>
+                </div>
                 <Information
                     title="University"
                     content={ `${ university?.name }, ${ university?.alpha_two_code }` || '' }
