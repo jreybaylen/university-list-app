@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-import { useEffect, useState, useCallback, Fragment, lazy } from 'react'
+import { lazy, useEffect, useState, useCallback, Fragment } from 'react'
 
 import { styles } from './index.style'
 import { UniversityProps, APIResponseProps } from '@interface/api.interface'
