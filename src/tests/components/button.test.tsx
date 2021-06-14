@@ -12,11 +12,16 @@ describe('<Button /> Component', () => {
         const buttonLabel = 'Button testing'
         const handleClick = jest.fn()
         const { getByText } = render(
-            <Button onClick={ handleClick } children={ buttonLabel } style={{ background }} />
+            <Button 
+                onClick={ handleClick } 
+                style={ { background } }
+                children={ buttonLabel } 
+            />
         )
+        const buttonElement = getByText(buttonLabel)
 
-        expect(getByText(buttonLabel)).toBeInTheDocument()
-        expect(getByText(buttonLabel)).toHaveStyle(`background: ${ background }`)
+        expect(buttonElement).toBeInTheDocument()
+        expect(buttonElement).toHaveStyle(`background: ${ background }`)
     })
 
     it('Should work as expected when button is click', () => {
