@@ -54,6 +54,7 @@
     }
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/react-router-dom": "^5.1.7",
     "react-app-rewire-alias": "^1.0.3",
     "react-app-rewired": "^2.1.8"
