@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom'
 import { lazy, useEffect, useState, useCallback, Fragment } from 'react'
 
 import { styles } from './index.style'
+import { StorageKeyProps } from '@util/index.interface'
+import { ProfileProps } from '@interface/profile.interface'
 import { UniversityProps, APIResponseProps } from '@interface/api.interface'
 
 import { Information, Button, WebsiteLink } from '@components/index'
@@ -11,37 +13,72 @@ const Banner = lazy(() => import('@container/Banner'))
 
 function University (): JSX.Element {
     const { name } = useParams<{ name: string }>()
+    const [ buttonLabel, setButtonLabel ] = useState<string>('Add')
+    const [ universityKey, setUniversityKey ] = useState<string>('')
     const [ university, setUniversity ] = useState<UniversityProps>()
+    const handleGetListofUniv = useCallback(async (init?: boolean, univKeyToStore?: string) => {
+        const { environment } = await import('@config/environment')
+        const { saveUnivStorage } = environment as { saveUnivStorage: StorageKeyProps }
+        const { setDataToStorage, getUniversityListByUser, getAuthUserFromStorage } = await import('@util/index')
+        const { username } = getAuthUserFromStorage() as ProfileProps
+        const saveUniversityByUser = getUniversityListByUser(saveUnivStorage, username)
+
+        if (init && univKeyToStore) {
+            if (Boolean((saveUniversityByUser as any)[ univKeyToStore ])) {
+                setButtonLabel('Remove')
+            }
+
+            return
+        }
+
+        const newSetOfUnivList = [ {
+            [ username ]: {
+                ...saveUniversityByUser,
+                [ universityKey ]: (buttonLabel === 'Add') ? university : undefined
+            }
+        } ]
+
+        setDataToStorage(saveUnivStorage, newSetOfUnivList)
+
+        return
+    }, [ universityKey, buttonLabel, university ])
     const handleGetSpecificUniversity = useCallback(async () => {
         try {
+            const { environment } = await import('@config/environment')
             const { data }: APIResponseProps = await axios.get(`/search?name=${ name }`)
-            const [ universityInfo ] = data
+            const [ { name: univName, ...rest } ] = data
+            const univKeyToStore = univName.replaceAll(' ', environment.delimiter)
 
-            setUniversity(universityInfo)
+            setUniversity({ name: univName, ...rest })
+            setUniversityKey(univKeyToStore)
+            handleGetListofUniv(true, univKeyToStore)
         } catch (error: any) {
             console.error('Error Found: ', error)
         }
-    }, [ name ])
+    }, [ name, handleGetListofUniv ])
     const handleOpenWebsite = (website: string) => {
         window.open(website, '_blank')
     }
-    const handleSaveUniversity = async () => {
-        // const { setDataToStorage, getDataFromStorage } = await import('@util/index')
-
-        console.log(university)
+    const handleToggleUniversityFromStorage = () => {
+        handleGetListofUniv(false, '')
+        setButtonLabel((prevState: string) => (prevState === 'Add') ? 'Remove' : 'Add')
     }
 
     useEffect(() => {
         handleGetSpecificUniversity()
     }, [handleGetSpecificUniversity ])
 
+    const buttonStyle = {
+        ...styles.button,
+        background: `#${ (buttonLabel === 'Add') ? '1a73e8' : 'f44336' }`
+    }
     const universityElement = (
         <Fragment>
             <Banner title={ university?.name || '' } />
             <div style={ styles.information }>
                 <div style={ styles.save }>
-                    <Button style={ styles.button } onClick={ handleSaveUniversity }>
-                        Save University
+                    <Button style={ buttonStyle } onClick={ handleToggleUniversityFromStorage }>
+                        { buttonLabel } University
                     </Button>
                 </div>
                 <Information

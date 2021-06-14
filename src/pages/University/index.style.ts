@@ -15,7 +15,6 @@ const styles: StypesProps = {
         color: '#fff',
         border: 'none',
         position: 'absolute',
-        background: '#1a73e8',
         borderTopLeftRadius: 25,
         borderBottomLeftRadius: 25
     }
