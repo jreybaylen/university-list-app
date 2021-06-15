@@ -58,7 +58,7 @@ function University (): JSX.Element {
         } catch (error: any) {
             console.error('Error Found: ', error)
         }
-    }, [ name, handleGetListofUniv ])
+    }, [ handleGetListofUniv, name ])
     const handleOpenWebsite = (website: string) => {
         window.open(website, '_blank')
     }
@@ -69,7 +69,7 @@ function University (): JSX.Element {
 
     useEffect(() => {
         handleGetSpecificUniversity()
-    }, [handleGetSpecificUniversity ])
+    }, [ handleGetSpecificUniversity ])
 
     const buttonStyle = {
         ...styles.button,

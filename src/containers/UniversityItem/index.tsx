@@ -19,11 +19,15 @@ function University (props: ModifiedUniversityProps): JSX.Element {
     }
 
     useEffect(() => {
-        const { name, country, ...rest } = props
+        setName(props.name)
+        setCountry(props.country)
+        setWebsites(props.web_pages)
 
-        setName(name)
-        setCountry(country)
-        setWebsites(rest.web_pages)
+        return () => {
+            setName('')
+            setCountry('')
+            setWebsites([])
+        }
     }, [ props ])
     
     const universityElement = (
