@@ -8,6 +8,10 @@ A list of universities around the word
 * Registration
 * Profile with list of save universities
 
+## Notes
+* This app is using `Local Storage`
+* Kindly check the `console` from developer tools for the form validation response (**Sign In** and **Regisration Page**)
+
 ## Technologies
 - [Creat React App](https://create-react-app.dev/)
 - [React App Rewired](https://github.com/timarney/react-app-rewired)
