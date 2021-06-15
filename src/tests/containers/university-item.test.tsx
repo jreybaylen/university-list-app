@@ -27,9 +27,11 @@ describe('<Banner /> Component', () => {
     })
 
     it('Should render without crashing', () => {
-        render(
+        const wrapper = render(
             <UniversityItem { ...university } />
         )
+
+        expect(wrapper).toMatchSnapshot()
     })
 
     it('Should render the info inside of Card component', () => {

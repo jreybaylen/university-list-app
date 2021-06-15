@@ -5,11 +5,13 @@ import { Card, Button } from '@components/index'
 
 describe('<Card /> Component', () => {
     it('Should render without crashing', () => {
-        render(
+        const wrapper = render(
             <Card>
                 <p>Card component</p>
             </Card>
         )
+
+        expect(wrapper).toMatchSnapshot()
     })
 
     it('Should display all the children component', () => {

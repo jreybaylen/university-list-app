@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FormEditor /> Component Should render without crashing 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        style="padding: 30px; width: 90%; max-width: 400px; border-radius: 5px; margin: 8% auto 2%; box-shadow: rgb(0 0 0 / 20%) 0px 10px 15px 0px;"
+      >
+        <form
+          name="TestEditor"
+        >
+          <h1
+            style="font-weight: 500; margin-bottom: 30px;"
+          >
+            Test Form
+          </h1>
+          <div
+            style="margin-bottom: 15px;"
+          >
+            <button
+              style="outline: 0; cursor: pointer; width: 100%; padding: 10px 15px; border-top-right-radius: 25px; border-bottom-right-radius: 25px; text-transform: capitalize; color: rgb(255, 255, 255); border-radius: 25px; background: rgb(26, 115, 232);"
+              type="submit"
+            >
+              Test Button
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      style="padding: 30px; width: 90%; max-width: 400px; border-radius: 5px; margin: 8% auto 2%; box-shadow: rgb(0 0 0 / 20%) 0px 10px 15px 0px;"
+    >
+      <form
+        name="TestEditor"
+      >
+        <h1
+          style="font-weight: 500; margin-bottom: 30px;"
+        >
+          Test Form
+        </h1>
+        <div
+          style="margin-bottom: 15px;"
+        >
+          <button
+            style="outline: 0; cursor: pointer; width: 100%; padding: 10px 15px; border-top-right-radius: 25px; border-bottom-right-radius: 25px; text-transform: capitalize; color: rgb(255, 255, 255); border-radius: 25px; background: rgb(26, 115, 232);"
+            type="submit"
+          >
+            Test Button
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

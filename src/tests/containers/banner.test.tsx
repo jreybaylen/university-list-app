@@ -7,7 +7,9 @@ import University from '@pages/University'
 
 describe('<Banner /> Component', () => {
     it('Should render without crashing', () => {
-        render(<Banner title="" />)
+        const wrapper = render(<Banner title="" />)
+
+        expect(wrapper).toMatchSnapshot()
     })
 
     it('Should display title content', () => {

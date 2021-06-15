@@ -4,7 +4,9 @@ import { Loader } from '@components/Loader'
 
 describe('<Loader /> Component', () => {
     it('Should render without crashing', () => {
-        render(<Loader show={ true } />)
+        const wrapper = render(<Loader show={ true } />)
+
+        expect(wrapper).toMatchSnapshot()
     })
 
     it('Should render component when "show" prop is "true"', () => {

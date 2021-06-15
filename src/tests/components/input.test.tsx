@@ -4,7 +4,9 @@ import { Input } from '@components/Input'
 
 describe('<Input /> Component', () => {
     it('Should render without crashing', () => {
-        render(<Input />)
+        const wrapper = render(<Input />)
+
+        expect(wrapper).toMatchSnapshot()
     })
     
     it('Should render input when using the component', () => {

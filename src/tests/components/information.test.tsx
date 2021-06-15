@@ -4,7 +4,9 @@ import { Information } from '@components/Information'
 
 describe('<Information /> Component', () => {
     it('Should render without crashing', () => {
-        render(<Information title="Information" />)
+        const wrapper = render(<Information title="Information" />)
+
+        expect(wrapper).toMatchSnapshot()
     })
 
     it('Should render a dynamic heading and single content', () => {

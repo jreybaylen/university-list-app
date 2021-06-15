@@ -4,7 +4,9 @@ import Root from '@pages/Root'
 
 describe('<Root /> Component', () => {
     it('Should render without crashing', () => {
-        render(<Root />)
+        const wrapper = render(<Root />)
+
+        expect(wrapper).toMatchSnapshot()
     })
 
     it('Should render Home, Sign In and Register menu navigation', () => {

@@ -9,14 +9,15 @@ const keyWord = 'Philippines'
 describe('<SearchComposer /> Component', () => {
     it('Should render without crashing', () => {
         const handleSubmit = jest.fn()
-
-        render(
+        const wrapper = render(
             <SearchComposer
                 keyType={ keyType }
                 keyWord={ keyWord }
                 onSubmit={ handleSubmit }
             />
         )
+
+        expect(wrapper).toMatchSnapshot()
     })
 
     it('Should render Form, Picker, Input and Button component', () => {

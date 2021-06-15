@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Menu /> Component Should render without crashing 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <nav
+        style="width: 100%; max-width: 1000px; margin: auto; padding-top: 20px; display: flex; justify-content: center;"
+      >
+        <ul
+          style="padding-left: 0px; display: flex; list-style: none; justify-content: center;"
+        >
+          <li>
+            <a
+              aria-current="page"
+              class="active"
+              href="/"
+              style="color: rgb(33, 150, 243); border-radius: 25px; padding: 10px 20px; text-decoration: none; text-transform: capitalize; font-weight: 500; background: rgb(241, 241, 241); border: 1px solid #ccc;"
+            >
+              Home
+            </a>
+          </li>
+          <li>
+            <a
+              href="/auth"
+              style="color: rgb(33, 150, 243); border-radius: 25px; padding: 10px 20px; text-decoration: none; text-transform: capitalize;"
+            >
+              Sign In
+            </a>
+          </li>
+          <li>
+            <a
+              href="/register"
+              style="color: rgb(33, 150, 243); border-radius: 25px; padding: 10px 20px; text-decoration: none; text-transform: capitalize;"
+            >
+              Register
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </body>,
+  "container": <div>
+    <nav
+      style="width: 100%; max-width: 1000px; margin: auto; padding-top: 20px; display: flex; justify-content: center;"
+    >
+      <ul
+        style="padding-left: 0px; display: flex; list-style: none; justify-content: center;"
+      >
+        <li>
+          <a
+            aria-current="page"
+            class="active"
+            href="/"
+            style="color: rgb(33, 150, 243); border-radius: 25px; padding: 10px 20px; text-decoration: none; text-transform: capitalize; font-weight: 500; background: rgb(241, 241, 241); border: 1px solid #ccc;"
+          >
+            Home
+          </a>
+        </li>
+        <li>
+          <a
+            href="/auth"
+            style="color: rgb(33, 150, 243); border-radius: 25px; padding: 10px 20px; text-decoration: none; text-transform: capitalize;"
+          >
+            Sign In
+          </a>
+        </li>
+        <li>
+          <a
+            href="/register"
+            style="color: rgb(33, 150, 243); border-radius: 25px; padding: 10px 20px; text-decoration: none; text-transform: capitalize;"
+          >
+            Register
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

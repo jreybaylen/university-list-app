@@ -6,7 +6,9 @@ describe('<Form /> Component', () => {
     it('Should render without crashing', () => {
         const handleSubmitForm = jest.fn()
 
-        render(<Form onSubmit={ handleSubmitForm } />)
+        const wrapper = render(<Form onSubmit={handleSubmitForm} />)
+
+        expect(wrapper).toMatchSnapshot()
     })
 
     it('Should render without all the children component', () => {

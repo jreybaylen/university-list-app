@@ -14,11 +14,13 @@ const { authStorage } = environment as { [key: string]: StorageKeyProps }
 
 describe('<Menu /> Component', () => {
     it('Should render without crashing', () => {
-        render(
+        const wrapper = render(
             <MemoryRouter initialEntries={ [ '/' ] }>
                 <Menu />
             </MemoryRouter>
         )
+
+        expect(wrapper).toMatchSnapshot()
     })
 
     it('Should render Home, Sign In and Register menu navigation as default items', () => {

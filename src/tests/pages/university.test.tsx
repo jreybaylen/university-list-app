@@ -6,11 +6,13 @@ const UniversityPage = lazy(() => import('@pages/University'))
 
 describe('<UniversityPage /> Component', () => {
     it('Should render without crashing', () => {
-        render(
+        const wrapper = render(
             <Suspense fallback="">
                 <UniversityPage />
             </Suspense>
         )
+
+        expect(wrapper).toMatchSnapshot()
     })
 
     it('Should render headings of the page', async () => {

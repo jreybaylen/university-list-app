@@ -4,7 +4,9 @@ import { Button } from '@components/Button'
 
 describe('<Button /> Component', () => {
     it('Should render without crashing', () => {
-        render(<Button />)
+        const wrapper = render(<Button />)
+
+        expect(wrapper).toMatchSnapshot()
     })
 
     it('Should have dynamic properties', () => {

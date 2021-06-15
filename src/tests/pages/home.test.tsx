@@ -5,11 +5,13 @@ const HomePage = lazy(() => import('@pages/Home'))
 
 describe('<Home /> Component', () => {
     it('Should render without crashing', () => {
-        render(
+        const wrapper = render(
             <Suspense fallback="">
                 <HomePage />
             </Suspense>
         )
+
+        expect(wrapper).toMatchSnapshot()
     })
 
     it('Should render "Loading data..." while waiting for API response and search form', async () => {

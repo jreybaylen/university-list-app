@@ -10,8 +10,7 @@ const submitLabel = 'Test Button'
 describe('<FormEditor /> Component', () => {
     it('Should render without crashing', () => {
         const handleSubmit = jest.fn()
-
-        render(
+        const wrapper = render(
             <FormEditor
                 title={ title }
                 children={ [] }
@@ -20,6 +19,8 @@ describe('<FormEditor /> Component', () => {
                 submitLabel={ submitLabel }
             />
         )
+
+        expect(wrapper).toMatchSnapshot()
     })
 
     it('Should render without Form, Heading, Children and Button component', () => {

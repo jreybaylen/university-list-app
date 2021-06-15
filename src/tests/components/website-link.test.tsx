@@ -4,7 +4,9 @@ import { WebsiteLink } from '@components/WebsiteLink'
 
 describe('<WebsiteLink /> Component', () => {
     it('Should render without crashing', () => {
-        render(<WebsiteLink website="" />)
+        const wrapper = render(<WebsiteLink website="" />)
+
+        expect(wrapper).toMatchSnapshot()
     })
 
     it('Should trigger onSelect when button is click', () => {

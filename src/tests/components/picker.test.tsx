@@ -5,7 +5,9 @@ import { Picker } from '@components/Picker'
 
 describe('<Picker /> Component', () => {
     it('Should render without crashing', () => {
-        render(<Picker options={ [] } />)
+        const wrapper = render(<Picker options={ [] } />)
+
+        expect(wrapper).toMatchSnapshot()
     })
 
     it('Should render select element without option', () => {
