@@ -42,7 +42,7 @@ describe('<Picker /> Component', () => {
             <Picker
                 value="name"
                 onChange={ handlePickerChange }
-                options={['Name', 'Country' ] }
+                options={ [ 'Name', 'Country' ] }
             />
         )
         const selectElement = container.querySelector('select')
