@@ -47,7 +47,7 @@ describe('<Auth /> Component', () => {
         expect((getByPlaceholderText(passwordLabel) as HTMLInputElement).value).toBe(passwordValue)
     })
 
-    it('Should render Sign In label as heading and submit label', () => {
+    it('Should render "Sign In" label as heading and submit label', () => {
         const { container } = render(
             <Suspense fallback="">
                 <Auth />
