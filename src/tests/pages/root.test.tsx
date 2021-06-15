@@ -6,4 +6,12 @@ describe('<Root /> Component', () => {
     it('Should render without crashing', () => {
         render(<Root />)
     })
+
+    it('Should render Home, Sign In and Register menu navigation', () => {
+        const { getByText } = render(<Root />)
+
+        expect(getByText(/home/i)).toBeInTheDocument()
+        expect(getByText(/sign in/i)).toBeInTheDocument()
+        expect(getByText(/register/i)).toBeInTheDocument()
+    })
 })
