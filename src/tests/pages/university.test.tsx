@@ -24,14 +24,11 @@ describe('<UniversityPage /> Component', () => {
             </Suspense>
         )
         const headings = container.querySelectorAll('h2')
+        const equality = [ 'University', 'Country', 'Website(s)', 'Domain(s)' ]
 
-        expect(getByText(/university/i)).toBeInTheDocument()
-        expect(headings[0]?.textContent).toStrictEqual('University')
-        expect(getByText(/country/i)).toBeInTheDocument()
-        expect(headings[1]?.textContent).toStrictEqual('Country')
-        expect(getByText(/website\(s\)/i)).toBeInTheDocument()
-        expect(headings[2]?.textContent).toStrictEqual('Website(s)')
-        expect(getByText(/domain\(s\)/i)).toBeInTheDocument()
-        expect(headings[3]?.textContent).toStrictEqual('Domain(s)')
+        for (let i = 0; i++; i < headings.length) {
+            expect(getByText(equality[ i ])).toBeInTheDocument()
+            expect(headings[ i ]?.textContent).toStrictEqual(equality[ i ])
+        }
     })
 })

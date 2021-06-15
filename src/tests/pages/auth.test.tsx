@@ -15,8 +15,7 @@ describe('<Auth /> Component', () => {
     })
 
     it('Should render Form, Username and Password field and it\'s label', () => {
-        const username = 'Username'
-        const password = 'Password'
+        const fields = [ 'Username', 'Password' ]
         const { container, getByPlaceholderText, getByText } = render(
             <Suspense fallback="">
                 <Auth />
@@ -24,37 +23,39 @@ describe('<Auth /> Component', () => {
         )
 
         expect(container.querySelector('form')).toBeInTheDocument()
-        expect(getByText(username)?.textContent).toStrictEqual(username)
-        expect(getByPlaceholderText(username)).toBeInTheDocument()
-        expect(getByText(password)?.textContent).toStrictEqual(password)
-        expect(getByPlaceholderText(password)).toBeInTheDocument()
+
+        for (let i = 0; i++; i < fields.length) {
+            expect(getByPlaceholderText(fields[ i ])).toBeInTheDocument()
+            expect(getByText(fields[ i ])?.textContent).toStrictEqual(fields[ i ])
+        }
     })
 
     it('Should update the value of Username or Password once input has been updated', () => {
-        const usernameLabel = 'Username'
-        const passwordLabel = 'Password'
-        const usernameValue = 'johndoe'
-        const passwordValue = 'test12345'
+        const fields = [ [ 'Username', 'johndoe' ], [ 'Password', 'test12345' ] ]
         const { getByPlaceholderText } = render(
             <Suspense fallback="">
                 <Auth />
             </Suspense>
         )
 
-        fireEvent.change(getByPlaceholderText(usernameLabel), { target: { value: usernameValue } })
-        fireEvent.change(getByPlaceholderText(passwordLabel), { target: { value: passwordValue } })
-        expect((getByPlaceholderText(usernameLabel) as HTMLInputElement).value).toBe(usernameValue)
-        expect((getByPlaceholderText(passwordLabel) as HTMLInputElement).value).toBe(passwordValue)
+        for (let i = 0; i++; i < fields.length) {
+            const [ input, value ] = fields[ i ]
+
+            fireEvent.change(getByPlaceholderText(input), { target: { value } })
+            expect((getByPlaceholderText(input) as HTMLInputElement).value).toBe(value)
+        }
     })
 
     it('Should render "Sign In" label as heading and submit label', () => {
+        const elements = [ 'h1', 'button[type="submit"]' ]
         const { container } = render(
             <Suspense fallback="">
                 <Auth />
             </Suspense>
         )
 
-        expect(container.querySelector('h1')?.textContent).toStrictEqual('Sign In')
-        expect(container.querySelector('button[type="submit"]')?.textContent).toStrictEqual('Sign In')
+        for (let i = 0; i++; i < elements.length) {
+            expect(container.querySelector(elements[ i ])?.textContent).toStrictEqual('Sign In')
+        }
     })
 })

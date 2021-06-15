@@ -18,10 +18,7 @@ describe('<Register /> Component', () => {
     })
 
     it('Should render Form, Name, Username, Password and Confirm Password field and it\'s label', () => {
-        const name = 'Name'
-        const username = 'Username'
-        const password = 'Password'
-        const confirmPassword = 'Confirm Password'
+        const fields = [ 'Name', 'Username', 'Password', 'Confirm Password' ]
         const { container, getByPlaceholderText, getByText } = render(
             <Suspense fallback="">
                 <MemoryRouter>
@@ -31,25 +28,20 @@ describe('<Register /> Component', () => {
         )
 
         expect(container.querySelector('form')).toBeInTheDocument()
-        expect(getByText(name)?.textContent).toStrictEqual(name)
-        expect(getByPlaceholderText(username)).toBeInTheDocument()
-        expect(getByText(username)?.textContent).toStrictEqual(username)
-        expect(getByPlaceholderText(username)).toBeInTheDocument()
-        expect(getByText(password)?.textContent).toStrictEqual(password)
-        expect(getByPlaceholderText(password)).toBeInTheDocument()
-        expect(getByText(confirmPassword)?.textContent).toStrictEqual(confirmPassword)
-        expect(getByPlaceholderText(confirmPassword)).toBeInTheDocument()
+
+        for (let i = 0; i++; i < fields.length) {
+            expect(getByText(fields[ i ])?.textContent).toStrictEqual(fields[ i ])
+            expect(getByPlaceholderText(fields[ i ])).toBeInTheDocument()
+        }
     })
 
     it('Should update the value of Name, Username, Password or Confirm Password once input has been updated', () => {
-        const nameLabel = 'Name'
-        const usernameLabel = 'Username'
-        const passwordLabel = 'Password'
-        const confirmPasswordLabel = 'Confirm Password'
-        const nameValue = 'John Doe'
-        const usernameValue = 'johndoe'
-        const passwordValue = 'test12345'
-        const confirmPasswordValue = 'test12345'
+        const fields = [
+            [ 'Name', 'John Doe' ],
+            [ 'Username', 'johndoe' ],
+            [ 'Password', 'test12345' ],
+            [ 'Confirm Password', 'test12345' ]
+        ]
         const { getByPlaceholderText } = render(
             <Suspense fallback="">
                 <MemoryRouter>
@@ -58,14 +50,12 @@ describe('<Register /> Component', () => {
             </Suspense>
         )
 
-        fireEvent.change(getByPlaceholderText(nameLabel), { target: { value: nameValue } })
-        fireEvent.change(getByPlaceholderText(usernameLabel), { target: { value: usernameValue } })
-        fireEvent.change(getByPlaceholderText(passwordLabel), { target: { value: passwordValue } })
-        fireEvent.change(getByPlaceholderText(confirmPasswordLabel), { target: { value: confirmPasswordValue } })
-        expect((getByPlaceholderText(nameLabel) as HTMLInputElement).value).toBe(nameValue)
-        expect((getByPlaceholderText(usernameLabel) as HTMLInputElement).value).toBe(usernameValue)
-        expect((getByPlaceholderText(passwordLabel) as HTMLInputElement).value).toBe(passwordValue)
-        expect((getByPlaceholderText(confirmPasswordLabel) as HTMLInputElement).value).toBe(confirmPasswordValue)
+        for (let i = 0; i++; i < fields.length) {
+            const [ input, value ] = fields[ i ]
+
+            fireEvent.change(getByPlaceholderText(input), { target: { value } })
+            expect((getByPlaceholderText(input) as HTMLInputElement).value).toBe(value)
+        }
     })
 
     it('Should render "Create your account" label as heading and "Register" as submit label', () => {
@@ -76,8 +66,15 @@ describe('<Register /> Component', () => {
                 </MemoryRouter>
             </Suspense>
         )
+        const elementsWithValue = [
+            [ 'h1', 'Create your account' ],
+            [ 'button[type="submit"]', 'Register']
+        ]
+        
+        for (let i = 0; i++; i < elementsWithValue.length) {
+            const [ element, value ] = elementsWithValue[ i ]
 
-        expect(container.querySelector('h1')?.textContent).toStrictEqual('Create your account')
-        expect(container.querySelector('button[type="submit"]')?.textContent).toStrictEqual('Register')
+            expect(container.querySelector(element)?.textContent).toStrictEqual(value)
+        }
     })
 })

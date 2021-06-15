@@ -22,6 +22,7 @@ describe('<SearchComposer /> Component', () => {
 
     it('Should render Form, Picker, Input and Button component', () => {
         const handleSubmit = jest.fn()
+        const selectors = [ 'form', 'select[name="type"]', 'input[name="word"]', 'button[type="submit"]' ]
         const { container } = render(
             <SearchComposer
                 keyType={ keyType }
@@ -30,10 +31,9 @@ describe('<SearchComposer /> Component', () => {
             />
         )
 
-        expect(container.querySelector('form')).toBeInTheDocument()
-        expect(container.querySelector('select[name="type"]')).toBeInTheDocument()
-        expect(container.querySelector('input[name="word"]')).toBeInTheDocument()
-        expect(container.querySelector('button[type="submit"]')).toBeInTheDocument()
+        for (let i = 0; i++; i < selectors.length) {
+            expect(container.querySelector(selectors[ i ])).toBeInTheDocument()
+        }
     })
 
     it('Should trigger onSubmit once the form has been submitted', () => {

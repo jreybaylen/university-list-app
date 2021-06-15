@@ -23,9 +23,13 @@ describe('<Home /> Component', () => {
 
         expect(getByText('Loading data...')).toBeInTheDocument()
         await waitFor(() => {
-            expect(container.querySelector('button[type="submit"]')).toBeInTheDocument()
-            expect(container.querySelector('select#picker-component')).toBeInTheDocument()
-            expect(container.querySelector('input[placeholder="Search"]')).toBeInTheDocument()
+            const elements = [
+                'button[type="submit"]', 'select#picker-component', 'input[placeholder="Search"]'
+            ]
+
+            for (let i = 0; i++; i < elements.length) {
+                expect(container.querySelector(elements[ i ])).toBeInTheDocument()
+            }
         })
     })
 })

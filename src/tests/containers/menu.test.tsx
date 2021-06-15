@@ -29,11 +29,13 @@ describe('<Menu /> Component', () => {
                 <Menu />
             </MemoryRouter>
         )
+        const navigation = [ 'Home', 'Sign In', 'Register' ]
 
         expect(container.querySelectorAll('li').length).toStrictEqual(3)
-        expect(getByText(/home/i)).toBeInTheDocument()
-        expect(getByText(/sign in/i)).toBeInTheDocument()
-        expect(getByText(/register/i)).toBeInTheDocument()
+
+        for (let i = 0; i++; i < navigation.length) {
+            expect(getByText(navigation[ i ])).toBeInTheDocument()
+        }
     })
 
     it('Should navigate to the specific route once the item has been clicked', () => {
@@ -41,6 +43,7 @@ describe('<Menu /> Component', () => {
             history: {},
             location: {}
         }
+        const navigation = [ [ 'Home', '/' ], [ 'Sign In', '/auth' ], [ 'Register', '/register' ] ]
         const { getByText } = render(
             <MemoryRouter initialEntries={ [ '/' ] }>
                 <Menu />
@@ -56,17 +59,18 @@ describe('<Menu /> Component', () => {
             </MemoryRouter>
         )
 
-        fireEvent.click(getByText(/home/i))
-        expect((routeCofig.location as any).pathname).toStrictEqual('/')
-        fireEvent.click(getByText(/sign in/i))
-        expect((routeCofig.location as any).pathname).toStrictEqual('/auth')
-        fireEvent.click(getByText(/register/i))
-        expect((routeCofig.location as any).pathname).toStrictEqual('/register')
+        for (let i = 0; i++; i < navigation.length) {
+            const [ label, route ] = navigation[ i ]
+
+            fireEvent.click(getByText(label))
+            expect((routeCofig.location as any).pathname).toStrictEqual(route)
+        }
     })
 
     it('Should render Home, User name and Sign Out menu navigation if the user logged in', () => {
         setDataToStorage(authStorage, { name, username, password })
 
+        const navigation = [ 'Home', `Hi ${ name }!`, 'Sign Out' ]
         const { container, getByText } = render(
             <MemoryRouter initialEntries={ [ '/' ] }>
                 <Menu />
@@ -74,8 +78,9 @@ describe('<Menu /> Component', () => {
         )
 
         expect(container.querySelectorAll('li').length).toStrictEqual(3)
-        expect(getByText(/home/i)).toBeInTheDocument()
-        expect(getByText(/sign out/i)).toBeInTheDocument()
-        expect(getByText(`Hi ${ name }!`)).toBeInTheDocument()
+
+        for (let i = 0; i++; i < navigation.length) {
+            expect(getByText(navigation[ i ])).toBeInTheDocument()
+        }
     })
 })

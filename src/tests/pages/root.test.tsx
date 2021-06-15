@@ -11,9 +11,10 @@ describe('<Root /> Component', () => {
 
     it('Should render Home, Sign In and Register menu navigation', () => {
         const { getByText } = render(<Root />)
+        const navigation = [ 'Home', 'Sign In', 'Register' ]
 
-        expect(getByText(/home/i)).toBeInTheDocument()
-        expect(getByText(/sign in/i)).toBeInTheDocument()
-        expect(getByText(/register/i)).toBeInTheDocument()
+        for (let i = 0; i++; i < navigation.length) {
+            expect(getByText(navigation[ i ])).toBeInTheDocument()
+        }
     })
 })
